@@ -1,20 +1,24 @@
-# AWS CI/CD Pipeline with Docker, GitHub Actions, ECR, and EC2
+# AWS CI/CD Pipeline with Docker, GitHub Actions & ECR
 
-## Project Overview
+## 📖 Overview
 
-This project demonstrates a complete CI/CD pipeline using AWS and GitHub Actions.
+This project demonstrates a complete CI/CD pipeline using AWS and modern DevOps tools.
 
-Whenever code is pushed to GitHub, GitHub Actions automatically:
+The application is containerized using Docker, stored in Amazon Elastic Container Registry (ECR), and automatically built using GitHub Actions.
 
-1. Builds a Docker image
-2. Pushes the image to Amazon Elastic Container Registry (ECR)
-3. Makes the latest image available for deployment on an EC2 instance
+## 🛠 Technologies Used
 
-The application is a simple Dockerized website used to demonstrate cloud deployment and automation concepts.
+* AWS EC2
+* AWS ECR
+* Docker
+* GitHub Actions
+* Linux (Ubuntu)
+* Git & GitHub
+* Nginx
 
 ---
 
-## Architecture
+## 🏗 Architecture
 
 GitHub Repository
 
@@ -24,15 +28,11 @@ GitHub Actions
 
 ↓
 
-Docker Build
-
-↓
-
 Amazon ECR
 
 ↓
 
-Amazon EC2
+EC2 Instance
 
 ↓
 
@@ -44,81 +44,61 @@ Website
 
 ---
 
-## Technologies Used
+## 🚀 Project Workflow
 
-* AWS EC2
-* AWS ECR
-* AWS IAM
-* Docker
-* GitHub Actions
-* GitHub
-* Linux (Ubuntu)
+1. Source code stored in GitHub.
+2. GitHub Actions automatically triggers on push.
+3. Docker image is built.
+4. Image is pushed to Amazon ECR.
+5. EC2 server pulls image from ECR.
+6. Docker container runs the application.
+7. Website becomes available to users.
 
 ---
 
-## Project Structure
+## 📸 Screenshots
 
-```text
-cib-docker-cicd/
-│
-├── .github/
-│   └── workflows/
-│       └── docker-build.yml
-│
-├── Dockerfile
-├── index.html
-└── README.md
-```
+### Website Running
 
-## Docker Image Build
+![Website](screenshots/website-running.png)
 
-The Docker image is built using Nginx as the base image.
+### GitHub Actions Pipeline
 
-```dockerfile
-FROM nginx:latest
+![GitHub Actions](screenshots/github-actions-success.png)
 
-COPY index.html /usr/share/nginx/html/index.html
-```
+### Amazon ECR Repository
 
-## GitHub Actions Workflow
+![ECR](screenshots/ecr-repository.png)
 
-The workflow automatically:
+### Docker Container Running
 
-* Triggers on push to main branch
-* Builds Docker image
-* Logs into Amazon ECR
-* Pushes latest image to ECR
+![Docker](screenshots/docker-container.png)
 
-## Deployment
+### EC2 Instance
 
-After the image is pushed to ECR:
+![EC2](screenshots/ec2-instance.png)
 
-```bash
-docker pull <ECR-IMAGE-URI>
+---
 
-docker run -d -p 8080:80 <ECR-IMAGE-URI>
-```
+## 🎯 Key Learnings
 
-## Learning Outcomes
-
-Through this project I learned:
-
-* Docker image creation
-* Container deployment
-* GitHub Actions automation
+* Docker containerization
+* GitHub Actions CI/CD
 * Amazon ECR image management
-* AWS EC2 administration
-* Linux server management
-* CI/CD fundamentals
+* AWS EC2 deployment
+* Linux server administration
+* DevOps workflow automation
 
-## Future Improvements
+---
 
-* Automatic deployment to EC2
-* HTTPS using SSL certificates
-* Custom domain integration
-* Infrastructure as Code using Terraform
-* Monitoring with CloudWatch
+## 📌 Future Improvements
+
+* Terraform Infrastructure as Code
+* Kubernetes Deployment
+* CloudWatch Monitoring
+* Load Balancer Integration
+* HTTPS with SSL Certificate
+
+---
 
 
-
-Cloud Engineering Learning Project
